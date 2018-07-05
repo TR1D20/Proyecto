@@ -1,104 +1,250 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+import time
 
-# C extensions
-*.so
+hora=time.strftime("%c")
+print(hora)
+def menu():
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+    print("=============================")
+    print("==     1. Crear            ==")
+    print("==     2. Buscar           ==")
+    print("==     3. Editar           ==")
+    print("==     4. Eliminar         ==")
+    print("==     5. Mensaje          ==")
+    print("==     6. Ver historial    ==")
+    print("==     7. Salir            ==")
+    print("=============================")
+    print("Seleccione una opciÃ³n del 1 al 6: ")
+    opcion=int(input())
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+    return opcion
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+def crear(lista):
+    Alumnos = open("Alumnos.txt", "a")
+    print("Funcionalidad de crear")
+    Alumnos.write(input("Nombre: ") + " ")
+    Alumnos.write(input("Apellido paterno: ") + " ")
+    Alumnos.write(input("Edad: ") + " ")
+    Alumnos.write(input("Teléfono: ") + " ")
+    ID = open("ID.txt", "w")
+    ID.write(str(id))
+    ID.close()
+    Alumnos.write(str(id) + "\n")
+    lista_modificada = lista
+    Alumnos.close()
+    return lista_modificada
+    #Agregar un algoritmo que permita crear una lista solicitando los siguientes datos:
+    # 1. Nombres
+    # 2. Apellido Paterno
+    # 3. Edad
+    # 4. TelÃ©fono
+    # 5. ID_Registro --> Este cÃ³digo se va a generar automÃ¡ticamente de manera correlativa y serÃ¡ el identificador para manipular el registro en la lista.
 
-# Translations
-*.mo
-*.pot
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
 
-# Flask stuff:
-instance/
-.webassets-cache
+def buscar(lista_donde_se_buscara_el_valor, valor_a_buscar):
+    Alumnos = open("Alumnos.txt", "r")
+    for i in Alumnos:
+        if valor_a_buscar in i:
+            print(i)
+    #Agregar un algoritmo que permita buscar los registros en la lista_donde_se_buscara_el_valor que cumplan con el valor_a_buscar.
+    #DeberÃ¡ mostrar los registros que coincidan.
 
-# Scrapy stuff:
-.scrapy
+    print("Funcionalidad de buscar")
 
-# Sphinx documentation
-docs/_build/
+    return
 
-# PyBuilder
-target/
 
-# Jupyter Notebook
-.ipynb_checkpoints
 
-# pyenv
-.python-version
+def editar(lista, ID_Registro):
 
-# celery beat schedule file
-celerybeat-schedule
+    Alumnos = open("Alumnos.txt", "r")
+    lista = []
+    for i in Alumnos:
+        lista = i.split()
+        if codigo_de_alumno in lista[4]:
+            print(i)
+            b=input("Ingresar que deseas editar: Nombre, Apellido Paterno, Edad o Telefono: ")
+            if b=="Nombre":
+                cadena=str(lista[0])
+                palabra=cadena.replace(lista[0],input("Ingresar nuevo nombre: "))
+                nueva_lista=[]
+                nueva_lista.append(palabra)
+                nueva_lista.append(lista[1])
+                nueva_lista.append(lista[2])
+                nueva_lista.append(lista[3])
+                nueva_lista.append(lista[4])
+                print(nueva_lista)
+            elif b=="Apellido Paterno":
+                cadena=str(lista[1])
+                palabra=cadena.replace(lista[1],input("Ingresar nuevo Apellido Paterno: "))
+                nueva_lista=[]
+                nueva_lista.append(lista[0])
+                nueva_lista.append(palabra)
+                nueva_lista.append(lista[2])
+                nueva_lista.append(lista[3])
+                nueva_lista.append(lista[4])
+                print(nueva_lista)
+            elif b=="Edad":
+                cadena=str(lista[2])
+                palabra=cadena.replace(lista[2],input("Ingresar nuevo Edad: "))
+                nueva_lista=[]
+                nueva_lista.append(lista[0])
+                nueva_lista.append(lista[1])
+                nueva_lista.append(palabra)
+                nueva_lista.append(lista[3])
+                nueva_lista.append(lista[4])
+                print(nueva_lista)
+            elif b=="Telefono":
+                cadena=str(lista[3])
+                palabra=cadena.replace(lista[3],input("Ingresar nuevo Telefono: "))
+                nueva_lista=[]
+                nueva_lista.append(lista[0])
+                nueva_lista.append(lista[1])
+                nueva_lista.append(lista[2])
+                nueva_lista.append(palabra)
+                nueva_lista.append(lista[4])
+                print(nueva_lista)
+            else:
+                print("Ingresar solo los valores de:")
+                print("Nombre")
+                print("Apellido Paterno")
+                print("Edad")
+                print("Telefono")
+    else:
+        print("Ingresar el ID del alumno que desea editar")
 
-# SageMath parsed files
-*.sage.py
+    #Agregar un algoritmo que permita modificar el registro especifico de una lista
+    #Los datos que se podrÃ¡n modificar son:
+    # 1. Nombres
+    # 2. Apellido Paterno
+    # 3. Edad
+    # 4. TelÃ©fono
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+    lista_modificada = lista
 
-# Spyder project settings
-.spyderproject
-.spyproject
+    print("Funcionalidad de editar")
 
-# Rope project settings
-.ropeproject
+    return lista_modificada
 
-# mkdocs documentation
-/site
 
-# mypy
-.mypy_cache/
+
+def eliminar(lista, ID_Registro):
+
+    Alumnos = open("Alumnos.txt", "r")
+    lista = []
+    for i in Alumnos:
+        lista = i.split()
+        if codigo_de_alumno in lista[4]:
+            del lista[:]
+        Alumnos.close()
+    print(lista)
+    lista_modificada = lista
+
+    print("Funcionalidad de eliminar")
+
+    return lista_modificada
+
+
+def mensaje(emisor, receptor, mensaje, lista_de_mensajes):
+
+    Alumnos= open("Alumnos.txt", "r")
+    lista= []
+    lista_2=[]
+    lista_3=[]
+    historial=[]
+    for i in Alumnos:
+        lista = i.split()
+        if ID_registro_EMISOR in lista[4]:
+            lista_2.append(lista[0])
+            lista_2.append(lista[1])
+    Alumnos.close()
+    Alumnos=open("Alumnos.txt","r")
+    for t in Alumnos:
+        lista = t.split()
+        if ID_registro_RECEPTOR in lista[4]:
+            lista_3.append(lista[0])
+            lista_3.append(lista[1])
+    print("Emisor: "+lista_2[0]+" "+lista_2[1])
+    Emisor="Emisor: "+lista_2[0]+" "+lista_2[1]
+    print("Receptor: "+lista_3[0]+" "+lista_3[1])
+    Receptor="Receptor: "+lista_3[0]+" "+lista_3[1]
+    print("Mensaje: ",contenido_del_mensaje)
+    Mensaje="Mensaje: ",contenido_del_mensaje
+    print("Hora: ",hora)
+    Hora="Hora: ",hora
+    historial.append(Emisor)
+    historial.append(Receptor)
+    historial.append(Mensaje)
+    historial.append(Hora)
+    Historial=open("Historial.txt","r")
+    Historial.write(historial+"\n")
+    Historial.close()
+    #Agregar un algoritmo que permita agregar mensajes a una lista_de_mensajes con la siguiente estructura:
+    # ID_Registro_del_emisor
+    # ID_Registro_del_receptor
+    # Contenido del Mensaje
+    # Fecha y hora del mensaje --> Este valor debe generarse automÃ¡ticamente
+    return lista_de_mensajes
+
+
+
+def ver_historial(lista_de_mensaje):
+    Historial=open("Historial.txt","r")
+    lista=[]
+    for i in Historial.readlines():
+        lista = i.split()
+        print(lista)
+    Historial.close()
+    #Agregar un algoritmo para mostrar el historial de los mensajes en orden cronolÃ³gico con la siguient estructura:
+    # Nombres y apellido del emisor |  Nombres y apellido del receptor  |  Fecha y hora del mensaje  |  Contenido del Mensaje
+    # El historial debe mostrarse ordenado por Emisor , Receptor y Fecha y hora del mensaje
+
+    print("Funcionalidad de ver historial")
+
+
+    return
+
+
+
+lista_de_alumnos = []
+lista_de_mensajes = []
+
+opcion = 0
+while not(opcion == 7):
+
+    opcion = menu()
+    ID = open("ID.txt", "r+")
+    id = int(ID.readline()) + 1
+    if opcion == 1:
+        print("SeleccionÃ³ la opciÃ³n Crear")
+        lista_de_alumnos = crear(lista_de_alumnos)
+
+    elif opcion == 2:
+        print("SeleccionÃ³ la opciÃ³n Buscar")
+        valor_a_buscar = input("Ingrese el valor a buscar: ")
+        buscar(lista_de_alumnos, valor_a_buscar)
+
+    elif opcion == 3:
+        print("SeleccionÃ³ la opciÃ³n Editar")
+        codigo_de_alumno = int(input("Ingrese el ID de registro de alumno a MODIFICAR: "))
+        lista_de_alumnos = editar(lista_de_alumnos, codigo_de_alumno)
+
+    elif opcion == 4:
+        print("SeleccionÃ³ la opciÃ³n Eliminar")
+        codigo_de_alumno = int(input("Ingrese el ID de registro de alumno a ELIMINAR: "))
+        lista_de_alumnos = eliminar(lista_de_alumnos, codigo_de_alumno)
+
+    elif opcion == 5:
+        print("SeleccionÃ³ la opciÃ³n Mensaje")
+        ID_registro_EMISOR   = int(input("Ingrese el ID de registro del EMISOR: "))
+        ID_registro_RECEPTOR = int(input("Ingrese el ID de registro del RECEPTOR: "))
+        contenido_del_mensaje = input("Ingrese el mensaje: ")
+        lista_de_mensajes = mensaje(ID_registro_EMISOR, ID_registro_RECEPTOR, contenido_del_mensaje, lista_de_mensajes)
+
+    elif opcion == 6:
+        print("SeleccionÃ³ la opciÃ³n Ver Historial")
+        ver_historial(lista_de_mensajes)
+
+    elif opcion == 7:
+        print("FinalizÃ³ el programa")
